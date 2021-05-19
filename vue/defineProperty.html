@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        123123
+    </div>
+    <script>
+        var obj={}
+        var app=document.getElementById("app")
+        function defineReactive(obj,key,val){
+            Object.defineProperty(obj,key,{
+            get(){
+                return val
+            },
+            set(value){
+                if(value===obj['name']){
+                    return
+                }
+                val=value
+                app.innerHTML=value
+            }
+        })
+        }
+        defineReactive(obj,'name','heiq')
+        setInterval(()=>{
+            obj.name=new Date().toLocaleTimeString()
+        },1000)
+
+    </script>
+</body>
+</html>
